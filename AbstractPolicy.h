@@ -6,7 +6,7 @@
 class AbstractPolicy {
 private:
 int Abc;
-
+int ss;
 
 };
 
