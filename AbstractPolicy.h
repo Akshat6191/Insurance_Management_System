@@ -7,6 +7,8 @@ class AbstractPolicy {
 private:
 int Abc;
 int bb;
+double h;
+
 };
 
 #endif
