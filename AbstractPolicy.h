@@ -6,6 +6,8 @@
 class AbstractPolicy {
 private:
 int Abc;
+public:
+AbstractPolicy(){}
 
 };
 
