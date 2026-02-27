@@ -4,6 +4,8 @@
 
 
 class AbstractPolicy {
+private:
+int Abc;
 
 };
 
