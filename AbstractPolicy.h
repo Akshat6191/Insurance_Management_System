@@ -2,4 +2,9 @@
 
 #define ABSTRACTPOLICY_H  
 
+
+class AbstractPolicy {
+
+};
+
 #endif
