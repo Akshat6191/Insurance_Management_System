@@ -7,7 +7,7 @@
 
 //USED INITIALIZER LIST-------------------------------------------------------------------------
 Health_Insurance_Policy::HealthInsurancePolicy(std::string polno,std::string holder_name,int  holder_age,double sumAssured,bool hasPreexistingPlantype plan) : 
-    InsurancePolicy(std::move(polNo),std::move(holderName),
+    InsurancePolicy(std::move(polNo),std::move(holder_name),
     holder Age,sumAssured)
     , hasPreExisting_(hasPreExisting), 
     plan_(plan)
@@ -29,12 +29,12 @@ double Health_Insurance_Policy::calculatePremium() const {
     return (base + ageSurcharge + preSurcharge) * planMultiplier();                        
 }                                            
                                                 
-std::string Health_Insurance_Policy::grtPolicyType() const {
+std::string Health_Insurance_Policy::getPolicyType() const {
 return "Health Insurance";
 }               
 void HealthInsurancePolicy::displayDetails() const
 {
-    Utils::printLine();
+    Utils::print_Line();
 
     
     displayCommon();
