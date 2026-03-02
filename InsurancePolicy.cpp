@@ -1,6 +1,22 @@
 #include<iostream>
+#include "utils.h"
+#include "InsurancePolicy.h"
+#include<iomanip>
+#include<stdexcept>
+#include<utility>
 
-int main(){
+InsurancePolicy::InsurancePolicy(std::string pol_no , std::string holder_name , int holder_age , double sum_assured) : 
+                                policy_number_(std::move(pol_no)) ,
+                                holder_name_(std::move(holder_name)) ,
+                                holder_age_(holder_age) , 
+                                sum_assured_(sum_assured) {
+                                    if(holder_age_ <= 0 || holder_age_ >120) {
+                                        throw std :: invalid_argument("Agw must be between 1 and 120.");
+                                    }
 
-    return 0;
-}
+                                    if(sum_assured_ <= 0.0){
+                                        throw std:: invalid_argument("Sum assured must be positive value.");
+                                    }
+                                }
+
+const std::string& InsurancePolicy::getpolicy
