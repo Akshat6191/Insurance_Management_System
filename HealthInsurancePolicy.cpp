@@ -21,11 +21,19 @@ double HealthInsurancePolicy::planMultiplier() const noexcept {
         default:                 return 1.0;
     }
 }                                                              
+<<<<<<< HEAD
 double HealthInsurancePolicy::calculatePremium() const {
     const double base           = getSumAssured() * 0.02;
     const int    ageLoad        = (getHolder() > 30) ? ((getHolderAge() -30/5)): 0;
     const double ageSurcharge   = getSumAssured() * ageLoad * 0.005;
     const double preSurcharge   = hasPreExisting_ ? (base * 0.25): 0.0;
+=======
+double Health_Insurance_Policy::calculatePremium() const {
+    const double base        = getSumAssured() * 0.02;
+    const int    ageLoad     = (getHolder() > 30) ? ((getHolder Age() -30/5)): 0;
+    const double ageSurcharge = getSumAssured() * ageLoad * 0.005;
+    const double preSurcharge = hasPreExisting_ ? (base * 0.25): 0.0;
+>>>>>>> 2aa81e1 (Edited HealthinsurancePolicy.h)
     return (base + ageSurcharge + preSurcharge) * planMultiplier();                        
 }                                            
                                                 
