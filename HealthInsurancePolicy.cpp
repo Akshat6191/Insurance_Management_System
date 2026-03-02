@@ -56,7 +56,7 @@ void HealthInsurancePolicy::displayDetails() const
 
     std::cout << "Monthly Premium  : Rs. " << monthlyPremium << std::endl;
 
-    Utils::print_Line();
+    utils::print_Line();
 }
 std::string HealthInsurancePolicy::planTypeToString(PlanType plan) {
     switch (plan) {
