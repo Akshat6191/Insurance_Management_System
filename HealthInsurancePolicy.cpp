@@ -5,17 +5,16 @@
 #include <iomanip>
 #include <utility>
 
-
+//USED INITIALIZER LIST-------------------------------------------------------------------------
 Health_Insurance_Policy::HealthInsurancePolicy(std::string polno,
- std::string holder_name,int  holder_age,double sumAssured,bool hasPreexisting
-    Plantype plan) 
-    : InsurancePolicy(std::move(polNo),
-    std::move(holderName),
-    holder Age,
-    sumAssured)
-    , hasPreExisting_(hasPreExisting)
-    , plan_          (plan)
+ std::string holder_name,int  holder_age,double sumAssured,bool hasPreexistingPlantype plan) : 
+    InsurancePolicy(std::move(polNo),std::move(holderName),
+    holder Age,sumAssured)
+    , hasPreExisting_(hasPreExisting), 
+    plan_(plan)
 {}
+//------------------------------------------------------------------------------------------------
+
 double Health_Insurance_Policy::planMultiplier() const noexcept {
     switch (plan_){
         case PlanType::Standard: return 1.2;
@@ -24,10 +23,10 @@ double Health_Insurance_Policy::planMultiplier() const noexcept {
     }
 }                                                              
 double Health_Insurance_Policy::calculatePremium() const {
-    const double base        = getSumAssured() * 0.02;
-    const int    ageLoad     = (getHolder() > 30) ? ((getHolderAge() -30/5)): 0;
-    const double ageSurcharge = getSumAssured() * ageLoad * 0.005;
-    const double preSurcharge = hasPreExisting_ ? (base * 0.25): 0.0;
+    const double base           = getSumAssured() * 0.02;
+    const int    ageLoad        = (getHolder() > 30) ? ((getHolderAge() -30/5)): 0;
+    const double ageSurcharge   = getSumAssured() * ageLoad * 0.005;
+    const double preSurcharge   = hasPreExisting_ ? (base * 0.25): 0.0;
     return (base + ageSurcharge + preSurcharge) * planMultiplier();                        
 }                                            
                                                 
@@ -52,14 +51,11 @@ void HealthInsurancePolicy::displayDetails() const
     std::cout << "Plan Type        : " 
               << planTypeToString(plan_) << std::endl;
 
-    std::cout << "Pre-Existing     : " 
-              << (hasPreExisting_ ? "Yes" : "No") << std::endl;
+    std::cout << "Pre-Existing     : " << (hasPreExisting_ ? "Yes" : "No") << std::endl;
 
-    std::cout << "Annual Premium   : Rs. " 
-              << annualPremium << std::endl;
+    std::cout << "Annual Premium   : Rs. " << annualPremium << std::endl;
 
-    std::cout << "Monthly Premium  : Rs. " 
-              << monthlyPremium << std::endl;
+    std::cout << "Monthly Premium  : Rs. " << monthlyPremium << std::endl;
 
     Utils::print_Line();
 }
