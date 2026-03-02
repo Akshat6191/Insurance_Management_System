@@ -6,7 +6,7 @@
 #include <utility>
 
 //USED INITIALIZER LIST-------------------------------------------------------------------------
-Health_Insurance_Policy::HealthInsurancePolicy(std::string polno,std::string holder_name,int  holder_age,double sumAssured,bool hasPreexistingPlantype plan) : 
+HealthInsurancePolicy::HealthInsurancePolicy(std::string polno,std::string holder_name,int  holder_age,double sumAssured,bool hasPreexistingPlantype plan) : 
     InsurancePolicy(std::move(polNo),std::move(holder_name),
     holder Age,sumAssured)
     , hasPreExisting_(hasPreExisting), 
@@ -14,14 +14,14 @@ Health_Insurance_Policy::HealthInsurancePolicy(std::string polno,std::string hol
 {}
 //------------------------------------------------------------------------------------------------
 
-double Health_Insurance_Policy::planMultiplier() const noexcept {
+double HealthInsurancePolicy::planMultiplier() const noexcept {
     switch (plan_){
         case PlanType::Standard: return 1.2;
         case PlanType::Premium:  return 1.5;
         default:                 return 1.0;
     }
 }                                                              
-double Health_Insurance_Policy::calculatePremium() const {
+double HealthInsurancePolicy::calculatePremium() const {
     const double base           = getSumAssured() * 0.02;
     const int    ageLoad        = (getHolder() > 30) ? ((getHolderAge() -30/5)): 0;
     const double ageSurcharge   = getSumAssured() * ageLoad * 0.005;
@@ -29,7 +29,7 @@ double Health_Insurance_Policy::calculatePremium() const {
     return (base + ageSurcharge + preSurcharge) * planMultiplier();                        
 }                                            
                                                 
-std::string Health_Insurance_Policy::getPolicyType() const {
+std::string HealthInsurancePolicy::getPolicyType() const {
 return "Health Insurance";
 }               
 void HealthInsurancePolicy::displayDetails() const
