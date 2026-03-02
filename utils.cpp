@@ -6,7 +6,7 @@
 #include<stdexcept>
 #include<iostream>
 
-namespace Utils{
+namespace utils{
 //----------------------------------------------------------------------------------------------------
     void clear_Screen(){
         #if defined(_WIN32) || defined(_WIN64)
