@@ -5,15 +5,28 @@
 #include <iomanip>
 #include <utility>
 
-//USED INITIALIZER LIST-------------------------------------------------------------------------
+
+
 HealthInsurancePolicy::HealthInsurancePolicy(std::string polno,std::string holder_name,int  holder_age,double sumAssured,bool hasPreexisting , Plantype plan) : 
     InsurancePolicy(std::move(polNo),std::move(holder_name),
     holder Age,sumAssured)
     , hasPreExisting_(hasPreExisting), 
     plan_(plan)
 {}
-//------------------------------------------------------------------------------------------------
 
+
+
+HealthInsurancePolicy::HealthInsurancePolicy(std::string polno,
+ std::string holder_name ,int  holder_age, double sumAssured,bool hasPreexisting
+    Plantype plan) 
+   : InsurancePolicy(std::move(polNo),
+    std::move(holderName),
+    holder Age,
+    sumAssured)
+    , hasPreExisting_(hasPreExisting)
+    , plan_          (plan)
+{}
+ (Edited HealthInsurancePolicy.cpp)
 double HealthInsurancePolicy::planMultiplier() const noexcept {
     switch (plan_){
         case PlanType::Standard: return 1.2;
@@ -21,23 +34,30 @@ double HealthInsurancePolicy::planMultiplier() const noexcept {
         default:                 return 1.0;
     }
 }                                                              
-<<<<<<< HEAD
+
 double HealthInsurancePolicy::calculatePremium() const {
     const double base           = getSumAssured() * 0.02;
     const int    ageLoad        = (getHolder() > 30) ? ((getHolderAge() -30/5)): 0;
     const double ageSurcharge   = getSumAssured() * ageLoad * 0.005;
-    const double preSurcharge   = hasPreExisting_ ? (base * 0.25): 0.0;
-=======
-double Health_Insurance_Policy::calculatePremium() const {
+    const double preSurcharge   = hasPreExisting_ ? (base * 0.25): 0.0;}
+
+
+
+double HealthInsurancePolicy::calculatePremium() const {
+>>>>>>> 6ccd419 (Edited HealthInsurancePolicy.cpp)
     const double base        = getSumAssured() * 0.02;
     const int    ageLoad     = (getHolder() > 30) ? ((getHolder Age() -30/5)): 0;
     const double ageSurcharge = getSumAssured() * ageLoad * 0.005;
     const double preSurcharge = hasPreExisting_ ? (base * 0.25): 0.0;
->>>>>>> 2aa81e1 (Edited HealthinsurancePolicy.h)
+
     return (base + ageSurcharge + preSurcharge) * planMultiplier();                        
 }                                            
                                                 
-std::string HealthInsurancePolicy::getPolicyType() const {
+
+
+
+std::string HealthInsurancePolicy::grtPolicyType() const {
+
 return "Health Insurance";
 }               
 void HealthInsurancePolicy::displayDetails() const
