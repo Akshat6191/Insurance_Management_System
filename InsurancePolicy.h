@@ -16,7 +16,7 @@ class InsurancePolicy{
     InsurancePolicy& operator=(InsurancePolicy&&)=default;
     virtual ~InsurancePolicy() = default;
     virtual double       calculatePremium() const=0;
-    virtual std::string  getPolicyType()    const=0;
+    virtual std::string  getpolicy_type()    const=0;
     virtual void         displayDetails()   const=0;
     const std::string&   getpolicy_number_()  const noexcept;
     const std::string&   getholder_name_()  const noexcept;

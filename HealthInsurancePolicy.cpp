@@ -7,9 +7,6 @@
 
 
 
-
-
-
 HealthInsurancePolicy::HealthInsurancePolicy(std::string polno,std::string holder_name,int  holder_age,double sumAssured,bool hasPreexisting , Plantype plan) : 
 
     InsurancePolicy(std::move(polNo),std::move(holder_name),
