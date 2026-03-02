@@ -36,7 +36,7 @@ namespace Utils{
         clear_Screen();
         print_Line('=');
         int padding = static_cast<int>((60 - static_cast<int>(title.size()))/2);
-        std::cout<<" "  << std::string(padding , ' ') <<title<<"\n";
+        std::cout<<" "  << std::string(padding , ' ') << title <<"\n";
         print_Line('-');
         std::cout<<"\n";
     }
