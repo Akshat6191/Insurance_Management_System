@@ -6,8 +6,7 @@
 #include <utility>
 
 //USED INITIALIZER LIST-------------------------------------------------------------------------
-Health_Insurance_Policy::HealthInsurancePolicy(std::string polno,
- std::string holder_name,int  holder_age,double sumAssured,bool hasPreexistingPlantype plan) : 
+Health_Insurance_Policy::HealthInsurancePolicy(std::string polno,std::string holder_name,int  holder_age,double sumAssured,bool hasPreexistingPlantype plan) : 
     InsurancePolicy(std::move(polNo),std::move(holderName),
     holder Age,sumAssured)
     , hasPreExisting_(hasPreExisting), 
