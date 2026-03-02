@@ -5,8 +5,9 @@
 #include <iomanip>
 #include <utility>
 
+
 Health_Insurance_Policy::HealthInsurancePolicy(std::string polno,
- std::string holder name,int  holder age,double sumAssured,bool hasPreexisting
+ std::string holder_name,int  holder_age,double sumAssured,bool hasPreexisting
     Plantype plan) 
     : InsurancePolicy(std::move(polNo),
     std::move(holderName),
@@ -60,7 +61,7 @@ void HealthInsurancePolicy::displayDetails() const
     std::cout << "Monthly Premium  : Rs. " 
               << monthlyPremium << std::endl;
 
-    Utils::printLine();
+    Utils::print_Line();
 }
 std::string HealthInsurancePolicy::planTypeToString(PlanType plan) {
     switch (plan) {
