@@ -18,6 +18,8 @@ class InsurancePolicy{
         InsurancePolicy(InsurancePolicy&&)                  =default;
         InsurancePolicy& operator=(InsurancePolicy&&)       =default;
         virtual ~InsurancePolicy()                          =default;
+
+
         virtual double       calculatePremium()     const=0;
         virtual std::string  getpolicy_type_()       const=0;
         virtual void         displayDetails()       const=0;
@@ -33,7 +35,12 @@ class InsurancePolicy{
         void    setholder_name_    (const std::string& holder_name);
         void    setholder_age_     (const int holder_age);
         void    setsum_assured_    (const double sum_assured);
-    
+
+        bool operator == (const InsurancePolicy& pln)const noexcept;
+        bool operator < (const InsurancePolicy& pln)const noexcept;
+        bool operator > (const InsurancePolicy& pln)const noexcept;
+        
+
     
 };
 std::ostream& operator<<(std::ostream& os,const InsurancePolicy& pol);
