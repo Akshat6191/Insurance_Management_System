@@ -12,7 +12,7 @@ InsurancePolicy::InsurancePolicy(std::string pol_no , std::string holder_name , 
                                 holder_age_(holder_age) , 
                                 sum_assured_(sum_assured) {
                                     if(holder_age_ <= 0 || holder_age_ >120) {
-                                        throw std :: invalid_argument("Agw must be between 1 and 120.");
+                                        throw std :: invalid_argument("Age must be between 1 and 120.");
                                     }
 
                                     if(sum_assured_ <= 0.0){
