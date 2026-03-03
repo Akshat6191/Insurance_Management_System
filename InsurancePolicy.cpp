@@ -62,9 +62,9 @@ bool InsurancePolicy :: operator == (const InsurancePolicy& pln)const noexcept{
 //     return sum_assured_ > sa.sum_assured_;
 // }
 
-        std::partial_ordering InsurancePolicy::operator<=>(const InsurancePolicy& pln) const noexcept{
-            return sum_assured_ <=> pln.sum_assured_ ;
-        }
+std::partial_ordering InsurancePolicy::operator<=>(const InsurancePolicy& pln) const noexcept{
+    return sum_assured_ <=> pln.sum_assured_ ;
+}
 
         // auto InsurancePolicy::operator<=>(const InsurancePolicy& pin)const noexcept{
         //     return sum_assured_ <=> pin.sum_assured_;
