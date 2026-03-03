@@ -29,5 +29,5 @@ class InsurancePolicy{
     std::string holder_name_;
     int         holder_age_;
     double      sum_assured_;
-}
+};
 #endif
