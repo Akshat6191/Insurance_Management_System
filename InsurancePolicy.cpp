@@ -29,26 +29,27 @@ double             InsurancePolicy::getsum_assured_() const noexcept{return sum_
 void InsurancePolicy::setpolicy_number_(const std::string& pol_no){
     if(pol_no.empty()){
         throw std::invalid_argument("POlicy number cannot be empty,");
-        policy_number_ = pol_no;
     }
+    policy_number_ = pol_no;
 }
 void InsurancePolicy::setholder_name_(const std::string& holder_name) {
     if(holder_name.empty()){
         throw std::invalid_argument("Holder holder_ cannot be empty.");
-        holder_name_ = holder_name;
     }
+            holder_name_ = holder_name;
 }
 void InsurancePolicy::setholder_age_(const int holder_age){
     if(holder_age<=0 || holder_age>120){
         throw std::invalid_argument("Age must be between 1 and 120");
-        holder_age_ = holder_age;
     }
+            holder_age_ = holder_age;
 }
 void InsurancePolicy :: setsum_assured_(const double holder_sum) {
     if(holder_sum<=0.0){
         throw std::invalid_argument("Sum assured must be positive.");
-        sum_assured_ = holder_sum;
     }
+            sum_assured_ = holder_sum;
+
 }
 
 bool InsurancePolicy :: operator == (const InsurancePolicy& pln)const noexcept{

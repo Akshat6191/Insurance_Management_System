@@ -15,7 +15,7 @@ namespace utils{
     double get_Double_Input(const std::string labels , double min_val);
     std::string get_String_Input(const std::string& labels);
 
-    std::string generate_Policy_Number(const std::string& prefix , int id);
+    std::string generate_policy_number_(const std::string& prefix , int id);
     
 }
 
