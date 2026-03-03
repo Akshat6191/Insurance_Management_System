@@ -4,7 +4,7 @@
 #include<iomanip>
 #include<stdexcept>
 #include<utility>
-
+// 
 
 InsurancePolicy::InsurancePolicy(std::string pol_no , std::string holder_name , int holder_age , double sum_assured) : 
                                 policy_number_(std::move(pol_no)) ,
@@ -55,12 +55,20 @@ void InsurancePolicy :: setsum_assured_(const double holder_sum) {
 bool InsurancePolicy :: operator == (const InsurancePolicy& pln)const noexcept{
     return policy_number_ == pln.policy_number_;
 }
-bool InsurancePolicy :: operator < (const InsurancePolicy& sa)const noexcept {
-    return sum_assured_ < sa.sum_assured_;
-}
-bool InsurancePolicy ::operator > (const InsurancePolicy& sa) const noexcept {
-    return sum_assured_ > sa.sum_assured_;
-}
+// bool InsurancePolicy :: operator < (const InsurancePolicy& sa)const noexcept {
+//     return sum_assured_ < sa.sum_assured_;
+// }
+// bool InsurancePolicy ::operator > (const InsurancePolicy& sa) const noexcept {
+//     return sum_assured_ > sa.sum_assured_;
+// }
+
+        std::partial_ordering InsurancePolicy::operator<=>(const InsurancePolicy& pln) const noexcept{
+            return sum_assured_ <=> pln.sum_assured_ ;
+        }
+
+        // auto InsurancePolicy::operator<=>(const InsurancePolicy& pin)const noexcept{
+        //     return sum_assured_ <=> pin.sum_assured_;
+        // }
 
 
 std::istream& operator >> (std:: istream& ip , InsurancePolicy& policy){
