@@ -4,6 +4,13 @@
 #include "InsurancePolicy.h"
 #include <string>
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 8453b9a (Edited LifeInsurancePolicy.h)
 enum class PlanType { Basic, Standard ,Premium};
 
 class HealthInsurancePolicy final: public InsurancePolicy{
@@ -25,4 +32,8 @@ class HealthInsurancePolicy final: public InsurancePolicy{
     PlanType plan_;
     double planmultiplier() const noexcept;
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8453b9a (Edited LifeInsurancePolicy.h)
 #endif
