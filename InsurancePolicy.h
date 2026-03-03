@@ -29,10 +29,10 @@ class InsurancePolicy{
         double               getsum_assured_()      const noexcept;
 
 
-        void setpolicy_number_(const std::string& pol_no);
-        void setholder_name_(const std::string& holder_name);
-        void setholder_age_(const int holder_age);
-        void setsum_assured_(const double sum_assured);
+        void    setpolicy_number_  (const std::string& pol_no);
+        void    setholder_name_    (const std::string& holder_name);
+        void    setholder_age_     (const int holder_age);
+        void    setsum_assured_    (const double sum_assured);
     
     
 };
