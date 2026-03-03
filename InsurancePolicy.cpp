@@ -97,7 +97,7 @@ void InsurancePolicy::displayCommon() const {
     std::cout<<std::fixed << std::setprecision(2);
     std::cout << std::fixed << std::setprecision(2);
     std::cout << "  Policy Number   : " << policy_number_   << '\n';
-    std::cout << "  Policy Type     : " << getpolicy_type() << '\n';
+    std::cout << "  Policy Type     : " << getpolicy_type_() << '\n';
     std::cout << "  Holder Name     : " << holder_name_     << '\n';
     std::cout << "  Holder Age      : " << holder_age_ << " years\n";
     std::cout << "  Sum Assured     : Rs. " << sum_assured_ << '\n';

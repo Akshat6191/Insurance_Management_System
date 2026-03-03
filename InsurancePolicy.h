@@ -21,10 +21,18 @@ class InsurancePolicy{
         virtual double       calculatePremium()     const=0;
         virtual std::string  getpolicy_type_()       const=0;
         virtual void         displayDetails()       const=0;
+
+
         const std::string&   getpolicy_number_()    const noexcept;
         const std::string&   getholder_name_()      const noexcept;
         int                  getholder_age_()       const noexcept;
         double               getsum_assured_()      const noexcept;
+
+
+        void setpolicy_number_(const std::string& pol_no);
+        void setholder_name_(const std::string& holder_name);
+        void setholder_age_(const int holder_age);
+        void setsum_assured_(const double sum_assured);
     
     
 };
