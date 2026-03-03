@@ -30,4 +30,7 @@ class InsurancePolicy{
     int         holder_age_;
     double      sum_assured_;
 };
+
+std::ostream& operator<<(std::ostream& os,const InsurancePolicy& pol);
+
 #endif
