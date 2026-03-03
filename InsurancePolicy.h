@@ -2,9 +2,9 @@
 #define INSURANCEPOLICY_H
 
 #include <string>
-#include<ostream>
+
 class InsurancePolicy{
-    public:
+    protected:
     InsurancePolicy(std::string pol_no_,
                     std::string holder_name_,
                     int         holder_age_,
@@ -30,7 +30,4 @@ class InsurancePolicy{
     int         holder_age_;
     double      sum_assured_;
 }
-
-std::ostream& operator<<(std::ostream& os,const InsurancePolicy& policy);
-
 #endif
