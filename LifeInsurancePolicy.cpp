@@ -57,7 +57,7 @@ const std::string& LifeInsurancePolicy::getNomineeName() const noexcept {
 }
 void LifeInsurancePolicy::settermYears_(int termYears){
     if(termYears <=0||termYears>40){
-        throw std::invalid_argument("Policy term must be between 1 adn 40 years,");
+        throw std::invalid_argument("Policy term must be between 1 and 40 years,");
     }
     termYears_ = termYears;
 }
