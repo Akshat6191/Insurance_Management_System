@@ -22,7 +22,7 @@ class LifeInsurancePolicy final : public InsurancePolicy{
     void setnomineeName_(std::string nomineeName);
 
 double       calculatePremium() const override;
-std::string  getpolicy_type_() const override;
+std::string  getPolicyType() const override;
 void         displayDetails()   const override;
 
 int                 getTermYears()   const noexcept;

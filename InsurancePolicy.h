@@ -24,7 +24,7 @@ class InsurancePolicy{
 
 
         virtual double       calculatePremium()     const=0;
-        virtual std::string  getpolicy_type_()      const=0;
+        virtual std::string  getPolicyType()      const=0;
         virtual void         displayDetails()       const=0;
 
 

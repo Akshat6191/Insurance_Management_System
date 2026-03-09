@@ -1,6 +1,6 @@
 #include "LifeInsurancePolicy.h"
 
-#include "utils.h"
+#include "Utils.h"
 
 #include <iostream>
 #include <iomanip>
@@ -35,19 +35,19 @@ double LifeInsurancePolicy::calculatePremium() const {
     return getsum_assured_() * (ageRate + termFactor);
 }
 
-std::string LifeInsurancePolicy::getpolicy_type_() const {
+std::string LifeInsurancePolicy::getPolicyType() const {
     return "Life Insurance";
 }
 
 void LifeInsurancePolicy::displayDetails() const {
-        utils::print_Line('=');
+        Utils::print_Line('=');
         displayCommon();
         std::cout << "Policy Term    : " << termYears_ << " years\n";
         std::cout << "Nominee Name   : " << nomineeName_ << "\n";
         std::cout << std::fixed << std::setprecision(2);
         std::cout << " Annual Premium : Rs. " << calculatePremium()  << '\n';
         std::cout << " Monthly Premium : Rs. " << calculatePremium() / 12  << '\n';
-        utils::print_Line('=');
+        Utils::print_Line('=');
     }
 int LifeInsurancePolicy::getTermYears() const noexcept {
     return termYears_;
@@ -63,7 +63,7 @@ void LifeInsurancePolicy::settermYears_(int termYears){
 }
 std::ostream& LifeInsurancePolicy::print(std::ostream& os)const{
     os<<std::fixed << std::setprecision(2)
-                   << "Policy Type      :" << getpolicy_type_() << "\n"
+                   << "Policy Type      :" << getPolicyType() << "\n"
                    <<" Policy no.       :" << getpolicy_number_() << "\n"
                     << " Holder name :"<< getholder_name_() << "\n"
                     << " Sum assured :" <<getsum_assured_() << "\n"

@@ -96,7 +96,7 @@ std::istream& operator >> (std:: istream& ip , InsurancePolicy& policy){
 
 std::ostream& operator << (std::ostream& os , const InsurancePolicy& pol) {
     os << std::fixed << std::setprecision(2);
-    os << "[" << pol.getpolicy_number_() <<"]" << pol.getpolicy_type_()<< " | " << pol.getholder_name_() << " | " << "Age:- "<< pol.getholder_age_()<< " | "<< " Sum: Rs "<<pol.getsum_assured_();
+    os << "[" << pol.getpolicy_number_() <<"]" << pol.getPolicyType()<< " | " << pol.getholder_name_() << " | " << "Age:- "<< pol.getholder_age_()<< " | "<< " Sum: Rs "<<pol.getsum_assured_();
 
     return os;
 }
@@ -105,7 +105,7 @@ void InsurancePolicy::displayCommon() const {
     std::cout<<std::fixed << std::setprecision(2);
     std::cout << std::fixed << std::setprecision(2);
     std::cout << "  Policy Number   : " << policy_number_   << '\n';
-    std::cout << "  Policy Type     : " << getpolicy_type_() << '\n';
+    std::cout << "  Policy Type     : " << getPolicyType() << '\n';
     std::cout << "  Holder Name     : " << holder_name_     << '\n';
     std::cout << "  Holder Age      : " << holder_age_ << " years\n";
     std::cout << "  Sum Assured     : Rs. " << sum_assured_ << '\n';
