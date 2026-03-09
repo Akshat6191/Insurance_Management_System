@@ -1,7 +1,7 @@
 #include "Menu.h"
 #include "Utils.h"
-#include "Life_Insurance_Policy.h"
-#include "Health_Insurance_Policy.h"
+#include "LifeInsurancePolicy.h"
+#include "HealthInsurancePolicy.h"
 
 #include <iostream>
 #include <iomanip>
