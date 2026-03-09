@@ -27,7 +27,6 @@ HealthInsurancePolicy::HealthInsurancePolicy(std::string polno,
     , hasPreExisting_(hasPreExisting)
     , plan_          (plan)
 {}
- (Edited HealthInsurancePolicy.cpp)
 double HealthInsurancePolicy::planMultiplier() const noexcept {
     switch (plan_){
         case PlanType::Standard: return 1.2;
@@ -45,7 +44,6 @@ double HealthInsurancePolicy::calculatePremium() const {
 
 
 double HealthInsurancePolicy::calculatePremium() const {
->>>>>>> 6ccd419 (Edited HealthInsurancePolicy.cpp)
     const double base        = getSumAssured() * 0.02;
     const int    ageLoad     = (getHolder() > 30) ? ((getHolder Age() -30/5)): 0;
     const double ageSurcharge = getSumAssured() * ageLoad * 0.005;
