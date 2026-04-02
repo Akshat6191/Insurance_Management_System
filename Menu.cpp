@@ -8,7 +8,7 @@
 #include <memory>
 #include <stdexcept>
 
-namespace Menu 
+namespace Menu {
 
 //--------------------------------------------------------------------------------------------
 //Add Life Insurance Policy 
@@ -26,8 +26,8 @@ void addLifePolicy(PolicyVault<InsurancePolicy>& vault, int& counter) {
   std::string polNo = Utils::generatePolicyNumber("LIFE", ++counter);
 
   try {
-    auto policy = std::make_unique<Life_Insurance_Policy(
-        pollNo,name,age,sum,term,nominee);
+    auto policy = std::make_unique<LifeInsurancePolicy>(
+        polNo,name,age,sum,term,nominee);
 
     vault.addPolicy(std::move(policy));
 
@@ -36,7 +36,7 @@ void addLifePolicy(PolicyVault<InsurancePolicy>& vault, int& counter) {
 
 
   }
-  catch(const std :: invalid_arguement& e){
+  catch(const std::invalid_argument& e){
 
     std::cout << "Error : " << e.what() << std::endl;
     counter--;
@@ -56,7 +56,7 @@ void viewAllPolicies(const PolicyVault<InsurancePolicy>& vault ){
     std::cout << "Total Annual Premium :" << vault.totalAnnualPremiums() << std::endl;
     
     std::cout << "\n----POLICY LIST ----\n";
-    for (const auto& policy : vault>getPolicies())
+    for (const auto& policy : vault.getPolicies())
     {
         std::cout << *policy << std::endl; // Operator Overloading Used here 
     }
