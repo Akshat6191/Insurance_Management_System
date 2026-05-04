@@ -3,7 +3,7 @@
 
 #include<string>
 
-namespace utils{
+namespace Utils{
 
     void clear_Screen();
     void pause_Screen();
