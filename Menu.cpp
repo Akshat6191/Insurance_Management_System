@@ -8,6 +8,10 @@
 #include <memory>
 #include <stdexcept>
 
+//============================================================================================
+// Menu - UI Layer Implementation
+//============================================================================================
+
 namespace Menu 
 
 //--------------------------------------------------------------------------------------------
@@ -17,13 +21,13 @@ void addLifePolicy(PolicyVault<InsurancePolicy>& vault, int& counter) {
 
   Utils::printHeader("ADD LIFE INSURANCE POLICY");
 
-  std::string name = Utils::getStringInput("Holder Name :");
-  int age = Utils::getIntInput("Age : ",1,70);
-  double sum = Utils::getDoubleInput("Sum Assured :",10000);
-  int term = Utils::getIntInput("Policy Term : ",1,40);
-  std::string nominee = Utils::getStringInput("Nominee Name : ");
+  const std::string name = Utils::getStringInput("Holder Name :");
+  const int age = Utils::getIntInput("Age : ",1,70);
+  const double sum = Utils::getDoubleInput("Sum Assured :",10000.0);
+  const int term = Utils::getIntInput("Policy Term : ",1,40);
+  const std::string nominee = Utils::getStringInput("Nominee Name : ");
 
-  std::string polNo = Utils::generatePolicyNumber("LIFE", ++counter);
+  const std::string polNo = Utils::generatePolicyNumber("LIFE", ++counter);
 
   try {
     auto policy = std::make_unique<Life_Insurance_Policy(
