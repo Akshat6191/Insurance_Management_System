@@ -43,17 +43,28 @@ double HealthInsurancePolicy::calculatePremium() const {
 
 std::string HealthInsurancePolicy::getPolicyType() const {
     return "Health Insurance";
-}       
+}
+
+std::ostream& HealthInsurancePolicy::print(std::ostream& os) const {
+    os << std::fixed << std::setprecision(2)
+       << "Policy Type      : " << getPolicyType() << "\n"
+       << " Policy no.       : " << getpolicy_number_() << "\n"
+       << " Holder name      : " << getholder_name_() << "\n"
+       << " Sum assured      : " << getsum_assured_() << "\n"
+       << " Plan             : " << planTypeToString(plan_) << "\n"
+       << " Pre-Existing     : " << (hasPreExisting_ ? "Yes" : "No") << "\n"
+       << " Annual Premium   : Rs. " << calculatePremium() << "\n"
+       << " Monthly Premium  : Rs. " << calculatePremium() / 12 << "\n";
+    return os;
+}
 
 void HealthInsurancePolicy::displayDetails() const
 
 {
     Utils::print_Line();
 
-    
     displayCommon();
 
-    
     double annualPremium  = calculatePremium();
     double monthlyPremium = annualPremium / 12.0;
 

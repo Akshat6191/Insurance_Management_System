@@ -22,12 +22,12 @@ LifeInsurancePolicy::LifeInsurancePolicy(std::string pol_no_,
 , nomineeName_ (std::move(nomineeName))
 {
     if (term_years_ <=0 || term_years_ >40)
-    throw std::invalid_argument("Policy terms muat be between 1 and 40 years");
-           
-    if(nomineeName.empty()){
+        throw std::invalid_argument("Policy terms must be between 1 and 40 years");
+
+    if(nomineeName_.empty()){
         throw std::invalid_argument("Nominee name cannot be empty.");
     }
-}        
+}
 
 double LifeInsurancePolicy::calculatePremium() const {
     const double ageRate    = getholder_age_() * 0.0005;

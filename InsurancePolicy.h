@@ -26,6 +26,7 @@ class InsurancePolicy{
         virtual double       calculatePremium()     const=0;
         virtual std::string  getPolicyType()      const=0;
         virtual void         displayDetails()       const=0;
+        virtual std::ostream& print(std::ostream& os) const = 0;
 
 
         const std::string&   getpolicy_number_()    const noexcept;

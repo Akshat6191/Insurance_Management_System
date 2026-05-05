@@ -21,6 +21,7 @@ class HealthInsurancePolicy final: public InsurancePolicy{
     double calculatePremium() const override;
     std::string getPolicyType() const override;
     void        displayDetails() const override;
+    std::ostream& print(std::ostream& os) const override;
     PlanType    getPlanType()    const noexcept;
     bool       hasPreExistingCond()  const noexcept;
     static std::string planTypeToString(PlanType plan);
