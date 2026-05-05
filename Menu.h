@@ -15,7 +15,7 @@ namespace Menu {
     void addHealthPolicy (PolicyVault<InsurancePolicy>& vault , int& counter) ;
     void viewAllPolicies (const PolicyVault<InsurancePolicy>& vault) ;
     void searchPolicy    (const PolicyVault<InsurancePolicy>& vault) ;
-    void premiumCalculator();
+    void premiumCalculator(const PolicyVault<InsurancePolicy>& vault);
     void summaryReport   (const PolicyVault<InsurancePolicy>& vault) ;
     void showAbout();
     void showMainMenu();

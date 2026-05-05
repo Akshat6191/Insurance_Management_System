@@ -1,7 +1,7 @@
 #include "Menu.h"
-#include "Utils.h"
-#include "Life_Insurance_Policy.h"
-#include "Health_Insurance_Policy.h"
+#include "utils.h"
+#include "LifeInsurancePolicy.h"
+#include "HealthInsurancePolicy.h"
 
 #include <iostream>
 #include <iomanip>
@@ -9,24 +9,24 @@
 #include <stdexcept>
 
 // Menu - UI Layer Implementation
-namespace Menu 
+namespace Menu {
 
 //Add Life Insurance Policy 
 void addLifePolicy(PolicyVault<InsurancePolicy>& vault, int& counter) {
 
-  Utils::printHeader("ADD LIFE INSURANCE POLICY");
+  Utils::print_Header("ADD LIFE INSURANCE POLICY");
 
-  const std::string name = Utils::getStringInput("Holder Name :");
-  const int age = Utils::getIntInput("Age : ",1,70);
-  const double sum = Utils::getDoubleInput("Sum Assured :",10000.0);
-  const int term = Utils::getIntInput("Policy Term : ",1,40);
-  const std::string nominee = Utils::getStringInput("Nominee Name : ");
+  const std::string name = Utils::get_String_Input("Holder Name :");
+  const int age = Utils::get_Int_Input("Age : ",1,70);
+  const double sum = Utils::get_Double_Input("Sum Assured :",10000.0);
+  const int term = Utils::get_Int_Input("Policy Term : ",1,40);
+  const std::string nominee = Utils::get_String_Input("Nominee Name : ");
 
-  const std::string polNo = Utils::generatePolicyNumber("LIFE", ++counter);
+  const std::string polNo = Utils::generate_policy_number_("LIFE", ++counter);
 
   try {
-    auto policy = std::make_unique<Life_Insurance_Policy(
-        pollNo,name,age,sum,term,nominee);
+    auto policy = std::make_unique<LifeInsurancePolicy>(
+        polNo,name,age,sum,term,nominee);
 
     vault.addPolicy(std::move(policy));
 
@@ -35,32 +35,68 @@ void addLifePolicy(PolicyVault<InsurancePolicy>& vault, int& counter) {
 
 
   }
-  catch(const std :: invalid_arguement& e){
+  catch(const std::invalid_argument& e){
 
     std::cout << "Error : " << e.what() << std::endl;
     counter--;
   }
 
-  Utils::pauseScreen();
+  Utils::pause_Screen();
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------
-// View All Policies (Using Operator Overloading <<)
+// Add Health Insurance Policy
+//-------------------------------------------------------------------------------------------------------------------------------
+void addHealthPolicy(PolicyVault<InsurancePolicy>& vault, int& counter) {
+  Utils::print_Header("ADD HEALTH INSURANCE POLICY");
+
+  const std::string name = Utils::get_String_Input("Holder Name :");
+  const int age = Utils::get_Int_Input("Age : ", 1, 80);
+  const double sum = Utils::get_Double_Input("Sum Assured :", 10000.0);
+  
+  std::cout << "Plans:\n  1. Basic   2. Standard   3. Premium\n";
+  const int planChoice = Utils::get_Int_Input("Select Plan: ", 1, 3);
+  const PlanType plan = (planChoice == 1) ? PlanType::Basic
+                      : (planChoice == 2) ? PlanType::Standard
+                                          : PlanType::Premium;
+
+  const int preChoice = Utils::get_Int_Input("Pre-Existing? (1=Yes / 2=No): ", 1, 2);
+  const bool preExisting = (preChoice == 1);
+
+  const std::string polNo = Utils::generate_policy_number_("HEALTH", ++counter);
+
+  try {
+    auto policy = std::make_unique<HealthInsurancePolicy>(
+        polNo, name, age, sum, preExisting, plan);
+
+    vault.addPolicy(std::move(policy));
+
+    std::cout << "\nPolicy Added Successfully\n";
+    std::cout << "Policy Number : " << polNo << std::endl;
+
+  } catch(const std::invalid_argument& e) {
+    std::cout << "Error : " << e.what() << std::endl;
+    counter--;
+  }
+
+  Utils::pause_Screen();
+}
+
 //-------------------------------------------------------------------------------------------------------------------------------
 void viewAllPolicies(const PolicyVault<InsurancePolicy>& vault ){
 
-    Utils::printHeader("ALL POLICIES ");
+    Utils::print_Header("ALL POLICIES ");
 
     std::cout << "Total Policies :" << vault.count() << std::endl;
     std::cout << "Total Annual Premium :" << vault.totalAnnualPremiums() << std::endl;
     
     std::cout << "\n----POLICY LIST ----\n";
-    for (const auto& policy : vault>getPolicies())
+    for (const auto& policy : vault.getPolicies())
     {
         std::cout << *policy << std::endl; // Operator Overloading Used here 
     }
 
-    Utils::pauseScreen();
+    Utils::pause_Screen();
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------
@@ -68,43 +104,41 @@ void viewAllPolicies(const PolicyVault<InsurancePolicy>& vault ){
 //---------------------------------------------------------------------------------------------------------------------------------
 void searchPolicy(const PolicyVault<InsurancePolicy>& vault ){
 
-    Utils::printHeader(" SEARCH POLICY ");
+    Utils::print_Header(" SEARCH POLICY ");
     
-}
-
     std::cout << "  1. Search by Policy Number\n";
     std::cout << "  2. Search by Holder Name\n";
-    const int choice = Utils::getIntInput("\n  Enter choice : ", 1, 2);
+    const int choice = Utils::get_Int_Input("\n  Enter choice : ", 1, 2);
     std::cout << '\n';
 
     if (choice == 1) {
-        const std::string polNo = Utils::getStringInput("  Policy Number : ");
+        const std::string polNo = Utils::get_String_Input("  Policy Number : ");
         const InsurancePolicy* result = vault.findByPolicyNumber(polNo);
         if (result)
             result->displayDetails();
         else
             std::cout << "\n  [!] No policy found: " << polNo << '\n';
     } else {
-        const std::string name = Utils::getStringInput("  Holder Name   : ");
+        const std::string name = Utils::get_String_Input("  Holder Name   : ");
         vault.findByHolderName(name);
     }
 
-    Utils::pauseScreen();
+    Utils::pause_Screen();
 }
 
 // ------------------------------------------------------------
-void premiumCalculator() {
-    Utils::printHeader("PREMIUM CALCULATOR");
+void premiumCalculator(const PolicyVault<InsurancePolicy>& vault) {
+    Utils::print_Header("PREMIUM CALCULATOR");
 
     std::cout << "  1. Life Insurance Estimate\n";
     std::cout << "  2. Health Insurance Estimate\n";
-    const int choice = Utils::getIntInput("\n  Enter choice : ", 1, 2);
+    const int choice = Utils::get_Int_Input("\n  Enter choice : ", 1, 2);
     std::cout << '\n';
 
     if (choice == 1) {
-        const int    age  = Utils::getIntInput   ("  Age (years)  : ", 1,     70);
-        const double sum  = Utils::getDoubleInput("  Sum Assured  : ",     10000.0);
-        const int    term = Utils::getIntInput   ("  Term (years) : ", 1,     40);
+        const int    age  = Utils::get_Int_Input   ("  Age (years)  : ", 1,     70);
+        const double sum  = Utils::get_Double_Input("  Sum Assured  : ",     10000.0);
+        const int    term = Utils::get_Int_Input   ("  Term (years) : ", 1,     40);
 
         const double annual = sum * (age * 0.0005 + term * 0.001);
         std::cout << std::fixed << std::setprecision(2);
@@ -112,16 +146,16 @@ void premiumCalculator() {
         std::cout << "  Monthly Premium : Rs. " << annual / 12.0  << '\n';
 
     } else {
-        const int    age  = Utils::getIntInput   ("  Age (years)  : ", 1, 80);
-        const double sum  = Utils::getDoubleInput("  Sum Assured  : ", 10000.0);
+        const int    age  = Utils::get_Int_Input   ("  Age (years)  : ", 1, 80);
+        const double sum  = Utils::get_Double_Input("  Sum Assured  : ", 10000.0);
 
         std::cout << "\n  Plans — 1. Basic   2. Standard   3. Premium\n";
-        const int planChoice = Utils::getIntInput("  Select Plan  : ", 1, 3);
+        const int planChoice = Utils::get_Int_Input("  Select Plan  : ", 1, 3);
         const PlanType plan  = (planChoice == 1) ? PlanType::Basic
                              : (planChoice == 2) ? PlanType::Standard
                                                  : PlanType::Premium;
 
-        const int  preChoice   = Utils::getIntInput("  Pre-Existing? (1=Yes / 2=No) : ", 1, 2);
+        const int  preChoice   = Utils::get_Int_Input("  Pre-Existing? (1=Yes / 2=No) : ", 1, 2);
         const bool preExisting = (preChoice == 1);
 
         const double base         = sum * 0.02;
@@ -138,30 +172,30 @@ void premiumCalculator() {
         std::cout << "  Monthly Premium : Rs. " << annual / 12.0 << '\n';
     }
 
-    Utils::pauseScreen();
+    Utils::pause_Screen();
 }
 
 // ------------------------------------------------------------
 void summaryReport(const PolicyVault<InsurancePolicy>& vault) {
-    Utils::printHeader("SUMMARY REPORT");
+    Utils::print_Header("SUMMARY REPORT");
 
     std::cout << std::fixed << std::setprecision(2);
     std::cout << "  Total Policies         : " << vault.count()                    << '\n';
     std::cout << "  Total Annual Premiums  : Rs. " << vault.totalAnnualPremiums()  << '\n';
     std::cout << "  Total Monthly Premiums : Rs. " << vault.totalAnnualPremiums() / 12.0 << '\n';
-    Utils::printLine();
+    Utils::print_Line();
     vault.displayAll();
 
-    Utils::pauseScreen();
+    Utils::pause_Screen();
 }
 
 // ------------------------------------------------------------
 void showAbout() {
-    Utils::printHeader("ABOUT THIS SYSTEM");
+    Utils::print_Header("ABOUT THIS SYSTEM");
 
-    Utils::printLine();
+    Utils::print_Line();
     std::cout << "  Insurance Management System  |  C++17\n";
-    Utils::printLine();
+    Utils::print_Line();
     std::cout << '\n';
     std::cout << "  Encapsulation   : Private data in InsurancePolicy;\n"
               << "                    exposed only via const noexcept getters.\n\n";
@@ -176,16 +210,16 @@ void showAbout() {
     std::cout << "  Smart Pointers  : std::unique_ptr — zero manual new/delete.\n\n";
     std::cout << "  Enums           : PlanType is a scoped enum (enum class).\n\n";
     std::cout << "  Namespaces      : Utils:: and Menu:: prevent global pollution.\n\n";
-    Utils::printLine();
+    Utils::print_Line();
 
-    Utils::pauseScreen();
+    Utils::pause_Screen();
 }
 
 // ------------------------------------------------------------
 void showMainMenu() {
-    Utils::printLine('=');
+    Utils::print_Line('=');
     std::cout << "         INSURANCE MANAGEMENT SYSTEM\n";
-    Utils::printLine('=');
+    Utils::print_Line('=');
     std::cout << "\n"
               << "  1. Add Life Insurance Policy\n"
               << "  2. Add Health Insurance Policy\n"
@@ -195,7 +229,7 @@ void showMainMenu() {
               << "  6. Summary Report\n"
               << "  7. About This System\n"
               << "  0. Exit\n";
-    Utils::printLine();
+    Utils::print_Line();
 }
 
 } // namespace Menu

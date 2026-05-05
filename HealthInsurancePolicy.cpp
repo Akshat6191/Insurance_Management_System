@@ -7,17 +7,6 @@
 
 
 
-HealthInsurancePolicy::HealthInsurancePolicy(std::string pol_no,
-    std::string holder_name, 
-    int  holder_age, 
-    double sum_assured, 
-    bool hasPreExisting , 
-    PlanType plan) : 
-    InsurancePolicy(std::move(pol_no) , std::move(holder_name),
-    holder_age,sum_assured)
-    , hasPreExisting_(hasPreExisting), 
-    plan_(plan)
-{}
 
 
 
@@ -38,13 +27,6 @@ double HealthInsurancePolicy::planMultiplier() const noexcept {
         default:                 return 1.0;
     }
 }                                                              
-
-double HealthInsurancePolicy::calculatePremium() const {
-    const double base           = getsum_assured_() * 0.02;
-    const int    ageLoad        = (getholder_age_() > 30) ? ((getholder_age_() -30/5)): 0;
-    const double ageSurcharge   = getsum_assured_() * ageLoad * 0.005;
-    const double preSurcharge   = hasPreExisting_ ? (base * 0.25): 0.0;}
-
 
 
 double HealthInsurancePolicy::calculatePremium() const {

@@ -62,7 +62,7 @@ public:
     T* findByPolicyNumber(const std::string& polNo) const {
         auto it = std::find_if(policies_.begin(), policies_.end(),
             [&polNo](const std::unique_ptr<T>& p) {
-                return p->getPolicyNumber() == polNo;
+                return p->getpolicy_number_() == polNo;
             });
         return (it != policies_.end()) ? it->get() : nullptr;
     }
@@ -70,7 +70,7 @@ public:
     void findByHolderName(const std::string& name) const {
         bool found = false;
         for (const auto& p : policies_) {
-            if (p->getHolderName() == name) {
+            if (p->getholder_name_() == name) {
                 p->displayDetails();
                 found = true;
             }
@@ -89,6 +89,10 @@ public:
             std::cout << "\n  [" << serial++ << "]";
             p->displayDetails();
         }
+    }
+
+    const std::vector<std::unique_ptr<T>>& getPolicies() const {
+        return policies_;
     }
 
 private:
