@@ -8,10 +8,10 @@
 #include <memory>
 #include <stdexcept>
 
-// Menu - UI Layer Implementation
+
 namespace Menu {
 
-//Add Life Insurance Policy 
+
 void addLifePolicy(PolicyVault<InsurancePolicy>& vault, int& counter) {
 
   Utils::print_Header("ADD LIFE INSURANCE POLICY");
@@ -44,9 +44,7 @@ void addLifePolicy(PolicyVault<InsurancePolicy>& vault, int& counter) {
   Utils::pause_Screen();
 }
 
-//-------------------------------------------------------------------------------------------------------------------------------
-// Add Health Insurance Policy
-//-------------------------------------------------------------------------------------------------------------------------------
+
 void addHealthPolicy(PolicyVault<InsurancePolicy>& vault, int& counter) {
   Utils::print_Header("ADD HEALTH INSURANCE POLICY");
 
@@ -93,15 +91,13 @@ void viewAllPolicies(const PolicyVault<InsurancePolicy>& vault ){
     std::cout << "\n----POLICY LIST ----\n";
     for (const auto& policy : vault.getPolicies())
     {
-        std::cout << *policy << std::endl; // Operator Overloading Used here 
+        std::cout << *policy << std::endl; 
     }
 
     Utils::pause_Screen();
 }
 
-//---------------------------------------------------------------------------------------------------------------------------------
-// Search Policy 
-//---------------------------------------------------------------------------------------------------------------------------------
+
 void searchPolicy(const PolicyVault<InsurancePolicy>& vault ){
 
     Utils::print_Header(" SEARCH POLICY ");
@@ -126,7 +122,6 @@ void searchPolicy(const PolicyVault<InsurancePolicy>& vault ){
     Utils::pause_Screen();
 }
 
-// ------------------------------------------------------------
 void premiumCalculator(const PolicyVault<InsurancePolicy>& vault) {
     Utils::print_Header("PREMIUM CALCULATOR");
 
@@ -194,7 +189,7 @@ void showAbout() {
     Utils::print_Header("ABOUT THIS SYSTEM");
 
     Utils::print_Line();
-    std::cout << "  Insurance Management System  |  C++17\n";
+    std::cout << "  Insurance Management System  |  C++20\n";
     Utils::print_Line();
     std::cout << '\n';
     std::cout << "  Encapsulation   : Private data in InsurancePolicy;\n"
@@ -232,5 +227,5 @@ void showMainMenu() {
     Utils::print_Line();
 }
 
-} // namespace Menu
+} 
 
