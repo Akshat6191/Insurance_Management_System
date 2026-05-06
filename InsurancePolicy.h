@@ -48,6 +48,6 @@ class InsurancePolicy{
 
     
 };
-std::istream& operator >> (std::istream& is , const InsurancePolicy& pol);
+std::istream& operator >> (std::istream& is , InsurancePolicy& pol);
 std::ostream& operator <<(std::ostream& os,const InsurancePolicy& pol);
 
